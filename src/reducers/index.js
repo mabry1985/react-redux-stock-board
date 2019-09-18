@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import stocks from "./stocksReducer.js";
+import apiData from "./api.js";
 
 export default combineReducers({
-  stocks
+  apiData
 });

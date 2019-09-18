@@ -1,4 +1,4 @@
-const stocks = (state = { loaded: false }, action) => {
+const apiData = (state = { loaded: false }, action) => {
   switch (action.type) {
     case "LOAD_STOCKS":
       return { loaded: true, stocks: action.payload };
@@ -7,4 +7,4 @@ const stocks = (state = { loaded: false }, action) => {
   }
 };
 
-export default stocks;
+export default apiData;

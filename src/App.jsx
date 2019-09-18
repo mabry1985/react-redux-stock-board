@@ -6,7 +6,6 @@ import { loadStocks } from "./actions/index.js";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.state;
   }
 
   // call the API and get the data when App enters the dom
@@ -21,17 +20,14 @@ class App extends React.Component {
         console.log("API Response: ", response);
         console.log(this);
         this.props.dispatch(loadStocks(response));
-        // this is kinda wonky but it lets the app update??
-        this.setState(this.props.state);
-        console.log("this is app state ", this.state);
       });
   };
 
   render() {
     let loader;
-    if (this.state.stocks.loaded === false) {
+    if (this.props.state.loaded === false) {
       loader = <h1>Loading...</h1>;
-    } else if (this.state.stocks.loaded === true) {
+    } else if (this.props.state.apiData.loaded === true) {
       loader = <h1>Loaded!!</h1>;
     }
     return (
