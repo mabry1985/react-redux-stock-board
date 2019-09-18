@@ -1,4 +1,4 @@
-const stocksReducer = (state = { loaded: false }, action) => {
+const stocks = (state = { loaded: false }, action) => {
   switch (action.type) {
     case "LOAD_STOCKS":
       return { loaded: true, stocks: action.payload };
@@ -7,4 +7,4 @@ const stocksReducer = (state = { loaded: false }, action) => {
   }
 };
 
-export default stocksReducer;
+export default stocks;
