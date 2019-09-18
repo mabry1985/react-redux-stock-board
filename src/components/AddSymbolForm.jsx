@@ -17,8 +17,8 @@ class AddSymbolForm extends React.Component {
   handleSubmit = () => {
     event.preventDefault();
     this.props.dispatch(addSymbol(this.state.symbol));
-    this.setState({ symbol: "" });
     this.props.onNewStockSymbol();
+    this.setState({ symbol: "" });
   };
 
   render() {

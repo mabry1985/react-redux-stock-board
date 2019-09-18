@@ -2,7 +2,7 @@ const symbols = (state = ["AAPL", "MSFT", "TSLA"], action) => {
   let tempState;
   switch (action.type) {
     case "ADD_SYMBOL":
-      tempState = state;
+      tempState = [...state];
       tempState.push(action.payload);
       return tempState;
     case "REMOVE_SYMBOL":

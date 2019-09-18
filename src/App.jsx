@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadStocks, addSymbol, removeSymbol } from "./actions/index.js";
+import { v4 } from "uuid";
 
 // components
 import StockList from "./components/StockList";
@@ -9,9 +10,11 @@ import StockList from "./components/StockList";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { key: v4() };
   }
 
   callAlphaVantageApi = () => {
+    console.log("Calling API");
     fetch(
       `https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&apikey=${
         process.env["API_KEY"]
@@ -26,6 +29,7 @@ class App extends React.Component {
 
   handleNewStockSymbol = () => {
     this.callAlphaVantageApi();
+    this.setState({ key: v4() });
   };
 
   componentWillMount = () => {
@@ -56,7 +60,10 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           {loader}
-          <StockList onNewStockSymbol={this.handleNewStockSymbol} />
+          <StockList
+            key={this.state.key}
+            onNewStockSymbol={this.handleNewStockSymbol}
+          />
         </div>
       </BrowserRouter>
     );
