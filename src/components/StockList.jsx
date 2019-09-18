@@ -1,7 +1,9 @@
 import React from "react";
-import Stock from "./Stock.jsx";
 import { connect } from "react-redux";
 import { v4 } from "uuid";
+// components
+import Stock from "./Stock.jsx";
+import AddSymbolForm from "./AddSymbolForm.jsx";
 
 class StockList extends React.Component {
   constructor(props) {
@@ -11,15 +13,14 @@ class StockList extends React.Component {
     const apiData = this.props.state.apiData;
     let loader;
     if (apiData.loaded === true) {
-      console.log(apiData.stocks["Stock Quotes"]);
       loader = apiData.stocks["Stock Quotes"].map(stock => {
         return <Stock key={v4()} stock={stock} />;
       });
-      console.log(loader);
     }
     return (
       <div>
         <h1>This is the StockList</h1>
+        <AddSymbolForm onNewStockSymbol={this.props.onNewStockSymbol} />
         {loader}
       </div>
     );

@@ -7,18 +7,26 @@ class Stock extends React.Component {
   }
 
   componentWillMount = () => {
-    console.log(this.props.stock);
     this.setState({ loaded: true, stock: this.props.stock });
   };
 
   render() {
-    let symbol;
+    let stock;
     if (this.state.loaded === false) {
-      symbol = <h3>Loading...</h3>;
+      stock = (
+        <div>
+          <h3>Loading...</h3>
+        </div>
+      );
     } else if (this.state.loaded === true) {
-      symbol = <h3>{this.state.stock["1. symbol"]}</h3>;
+      stock = (
+        <div>
+          <h3>{this.state.stock["1. symbol"]}</h3>
+          <h3>{this.state.stock["2. price"]}</h3>
+        </div>
+      );
     }
-    return <h3>{symbol}</h3>;
+    return stock;
   }
 }
 
