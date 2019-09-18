@@ -3,6 +3,9 @@ import { BrowserRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadStocks } from "./actions/index.js";
 
+// components
+import StockList from "./components/StockList";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +35,10 @@ class App extends React.Component {
     }
     return (
       <BrowserRouter>
-        <div>{loader}</div>
+        <div>
+          {loader}
+          <StockList />
+        </div>
       </BrowserRouter>
     );
   }
